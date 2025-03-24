@@ -8,28 +8,39 @@ Features
 ✅ Postman collection for easy testing
 
 Installation
-Clone the repo:
+1. Clone the repo:
 
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
 
-Install dependencies:
+    git clone https://github.com/yourusername/your-repo.git
+    cd your-repo
+   
 
-composer install
+2. Install dependencies:
 
-Set up environment variables:
 
-cp .env.example .env
-php artisan key:generate
+    composer install
 
-Run migrations & seed database:
 
-php artisan migrate --seed
+3. Set up environment variables:
 
-Start the server:
 
-php artisan serve
+    cp .env.example .env
+    php artisan key:generate
 
+
+4. Run migrations & seed database:
+
+
+    php artisan migrate --seed
+
+
+5. Start the server:
+
+
+    php artisan serve
+
+
+6. Run the CRUD postman service
 
 API Documentation
 📌 Import the Postman collection included in the repo to test endpoints easily.
