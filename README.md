@@ -10,35 +10,26 @@ Features
 Installation
 Clone the repo:
 
-bash
-Copy
-Edit
 git clone https://github.com/yourusername/your-repo.git
 cd your-repo
+
 Install dependencies:
 
-bash
-Copy
-Edit
 composer install
+
 Set up environment variables:
 
-bash
-Copy
-Edit
 cp .env.example .env
 php artisan key:generate
+
 Run migrations & seed database:
 
-bash
-Copy
-Edit
 php artisan migrate --seed
+
 Start the server:
 
-bash
-Copy
-Edit
 php artisan serve
+
+
 API Documentation
 📌 Import the Postman collection included in the repo to test endpoints easily.
