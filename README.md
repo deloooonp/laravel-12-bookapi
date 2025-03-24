@@ -2,10 +2,15 @@
 A RESTful API built with Laravel 12, featuring factories, seeders, and Postman for testing.
 
 Features
+
 ✅ Data generation using factories & seeders
+
 ✅ CRUD operations for managing resources
+
 ✅ Structured API responses
+
 ✅ Postman collection for easy testing
+
 
 Installation
 1. Clone the repo:
