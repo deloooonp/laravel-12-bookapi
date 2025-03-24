@@ -45,7 +45,7 @@ Installation
     php artisan serve
 
 
-6. Run the CRUD postman service
+
 
 API Documentation
 📌 Import the Postman collection included in the repo to test endpoints easily.
