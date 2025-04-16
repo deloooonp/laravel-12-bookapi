@@ -12,8 +12,7 @@ class BookController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        // $data = Book::orderBy('judul', 'asc')->get();
+    {   
         $data = Book::all();
         return response()->json([
             'status' => true,

@@ -23,7 +23,10 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return response()->json($user, 201);
+        return response()->json([
+            'status' => true,
+            'message' => 'Registrasi Berhasil!',
+        ], 200);
     }
 
     // Login and get token
@@ -42,7 +45,11 @@ class AuthController extends Controller
 
         $token = $user->createToken('api-token')->plainTextToken;
 
-        return response()->json(['token' => $token]);
+        return response()->json([
+            'status' => true,
+            'message' => 'User berhasil Login!',
+            'token' => $token,
+        ], 200);
     }
 
     // Get authenticated user
@@ -55,6 +62,10 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out']);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'User berhasil Logout!',
+        ], 200);
     }
 }
