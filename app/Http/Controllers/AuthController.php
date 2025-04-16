@@ -2,20 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     // Register a new user
     public function register(Request $request)
     {
-        $request->validate([
+        $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-        ]);
+        ];
+
+        $validatedData = Validator::make($request->all(), $rules);
+
+
+        if ($validatedData->fails()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Registrasi Gagal',
+                'error' => $validatedData->errors(),
+            ], 401);
+        }
 
         $user = User::create([
             'name' => $request->name,
@@ -40,7 +52,7 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json(['message' => 'Email atau password salah!'], 401);
         }
 
         $token = $user->createToken('api-token')->plainTextToken;

@@ -15,5 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class;
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->renderable(function (\Illuminate\Auth\AuthenticationException $e, $request) {
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => 'Anda harus login terlebih dahulu!'
+                ], 401);
+            }
+        });
     })->create();
